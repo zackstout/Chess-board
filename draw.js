@@ -43,7 +43,19 @@ function addPieces() {
   }
 }
 
+function mousePressed() {
+  // Grabbing the position of the cell that was clicked:
+  const x = Math.floor(mouseX / (width/8));
+  // console.log(x);
+  const y = Math.floor(mouseY / (height/8));
+  // console.log(y);
 
+  // Grabbing index of our cell in the Board array:
+  const ind = 8 * x + y;
+  // board[ind].active = true;
+  board[ind].activate();
+
+}
 
 
 

@@ -17,4 +17,6 @@ class Piece {
     // Add spacing to center text in the cell:
     text(type, this.pos.x * width/8 + width/16, this.pos.y * height/8 + height/16);
   }
+
+
 }
