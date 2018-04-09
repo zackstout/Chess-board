@@ -16,12 +16,28 @@ class Pawn extends Piece {
 
   getMoves() {
     console.log(this.color, board);
+    let possibleMoves = [];
     if (this.color == 'W') {
       // Then we need to check *next* row.
+      const ind = 8 * this.pos.x + this.pos.y;
+      // So we care about the item at ind + 1, its center move:
+      possibleMoves.push(board[ind + 1]);
+
+      if (!this.hasMoved) {
+        possibleMoves.push(board[ind + 2]);
+      }
     } else {
       // Then we need to check *prev* row.
-      // Need the three next, much like cellular automata.
+      const ind = 8 * this.pos.x + this.pos.y;
+      // We care about the item at ind - 1, its center move:
+      possibleMoves.push(board[ind - 1]);
+
+      if (!this.hasMoved) {
+        possibleMoves.push(board[ind - 2]);
+      }
     }
+
+    console.log(possibleMoves);
   }
 
 
