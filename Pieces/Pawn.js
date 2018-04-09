@@ -16,7 +16,12 @@ class Pawn extends Piece {
 
   getMoves() {
     console.log(this.color, board);
-    
+    if (this.color == 'W') {
+      // Then we need to check *next* row.
+    } else {
+      // Then we need to check *prev* row.
+      // Need the three next, much like cellular automata.
+    }
   }
 
 
