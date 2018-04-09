@@ -21,6 +21,7 @@ class Cell {
     text(`${this.x}, ${this.y}`, this.x * width/8, this.y * height/8 + height/8);
   }
 
+  // Ok, just need a way to deactivate -- that's why i wanted the boolean:
   activate() {
     fill(100, 200, 0);
     rect(this.x * width/8, this.y * height/8, width/8, height/8);

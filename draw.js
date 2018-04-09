@@ -6,7 +6,8 @@ function setup() {
   createCanvas(500, 500);
   background(200);
   drawGrid();
-  console.log(board);
+  // Always struck me as funny that this updates to show current state of object -- won't record its history -- i guess that's the idea behind immutable data types!
+  // console.log(board);
   addPieces();
   console.log(board);
 }
@@ -38,6 +39,7 @@ function addPieces() {
     board[ind].piece = pawn;
     board[ind2].piece = other_pawn;
 
+    pawn.getMoves();
     pawn.drawPiece('P');
     other_pawn.drawPiece('P');
   }

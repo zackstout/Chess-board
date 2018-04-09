@@ -10,9 +10,14 @@ class Pawn extends Piece {
       x: x,
       y: y
     };
+    // for the first move shenanigans:
+    this.hasMoved = false;
   }
 
-
+  getMoves() {
+    console.log(this.color, board);
+    
+  }
 
 
 
