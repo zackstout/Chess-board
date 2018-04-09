@@ -45,19 +45,44 @@ function addPieces() {
     black_pawn.drawPiece('P');
   }
 
-  // const wk1 = {x: 1, y:0};
-  // const wk2 = {x: 6, y:0};
-  // const bk1 = {x: 1, y:7};
-  // const bk2 = {x: 6, y:7};
-
-
-
   const knight_indices = [{x: 1, y: 0}, {x: 6, y: 0}, {x: 1, y: 7}, {x: 6, y: 7}];
   knight_indices.forEach(pos => {
     const knight = pos.y > 0 ? new Knight(pos.x, pos.y, 'B') : new Knight(pos.x, pos.y, 'W');
     const ind = 8 * pos.x + pos.y;
     board[ind].piece = knight;
     knight.drawPiece('K');
+  });
+
+  const bishop_indices = [{x: 0, y: 0}, {x: 7, y: 0}, {x: 0, y: 7}, {x: 7, y: 7}];
+  bishop_indices.forEach(pos => {
+    const knight = pos.y > 0 ? new Bishop(pos.x, pos.y, 'B') : new Bishop(pos.x, pos.y, 'W');
+    const ind = 8 * pos.x + pos.y;
+    board[ind].piece = knight;
+    knight.drawPiece('B');
+  });
+
+  const rook_indices = [{x: 1, y: 0}, {x: 6, y: 0}, {x: 1, y: 7}, {x: 6, y: 7}];
+  rook_indices.forEach(pos => {
+    const knight = pos.y > 0 ? new Rook(pos.x, pos.y, 'B') : new Rook(pos.x, pos.y, 'W');
+    const ind = 8 * pos.x + pos.y;
+    board[ind].piece = knight;
+    knight.drawPiece('R');
+  });
+
+  const king_indices = [{x: 3, y: 0}, {x: 3, y: 7}];
+  king_indices.forEach(pos => {
+    const knight = pos.y > 0 ? new King(pos.x, pos.y, 'B') : new King(pos.x, pos.y, 'W');
+    const ind = 8 * pos.x + pos.y;
+    board[ind].piece = knight;
+    knight.drawPiece('#');
+  });
+
+  const queen_indices = [{x: 4, y: 0}, {x: 4, y: 7}];
+  queen_indices.forEach(pos => {
+    const knight = pos.y > 0 ? new Queen(pos.x, pos.y, 'B') : new Queen(pos.x, pos.y, 'W');
+    const ind = 8 * pos.x + pos.y;
+    board[ind].piece = knight;
+    knight.drawPiece('Q');
   });
 }
 
