@@ -9,6 +9,6 @@ class Rook extends Piece {
     };
   }
 
-
+  // Need to check it's not blocked. 
 
 }

@@ -9,6 +9,7 @@ class Knight extends Piece {
     };
   }
 
+  // just need to check if on board and also in a certain set of 8 cells.
 
 
 }

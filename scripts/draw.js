@@ -1,6 +1,12 @@
 
 // The board will contain all of our Cells:
 let board = [];
+let knight_indices = [];
+let bishop_indices = [];
+let rook_indices = [];
+let queen_indices = [];
+let king_indices = [];
+
 
 function setup() {
   createCanvas(500, 500);
@@ -8,11 +14,11 @@ function setup() {
   drawGrid();
   // Always struck me as funny that this updates to show current state of object -- won't record its history -- i guess that's the idea behind immutable data types!
   // console.log(board);
-  addPieces();
+  initPieces();
   console.log(board);
 }
 
-// Draw the grid:
+// Populate the board array with cells that draw themselves:
 function drawGrid() {
   for (let i=0; i < 8; i++) {
     let col = [];
@@ -28,7 +34,9 @@ function draw() {
 
 }
 
-function addPieces() {
+
+// Add all pieces to the board in their initial state:
+function initPieces() {
   // Add both players' pawns:
   for (let i=0; i < 8; i++) {
     // 8 times the column number plus the row number (1, in this case) gives the index in the board array:
@@ -45,44 +53,25 @@ function addPieces() {
     black_pawn.drawPiece('P');
   }
 
-  const knight_indices = [{x: 1, y: 0}, {x: 6, y: 0}, {x: 1, y: 7}, {x: 6, y: 7}];
-  knight_indices.forEach(pos => {
-    const knight = pos.y > 0 ? new Knight(pos.x, pos.y, 'B') : new Knight(pos.x, pos.y, 'W');
-    const ind = 8 * pos.x + pos.y;
-    board[ind].piece = knight;
-    knight.drawPiece('K');
-  });
+  curryPieces([{x: 1, y: 0}, {x: 6, y: 0}, {x: 1, y: 7}, {x: 6, y: 7}], Knight);
+  curryPieces([{x: 2, y: 0}, {x: 5, y: 0}, {x: 2, y: 7}, {x: 5, y: 7}], Bishop);
+  curryPieces([{x: 0, y: 0}, {x: 7, y: 0}, {x: 0, y: 7}, {x: 7, y: 7}], Rook);
+  curryPieces([{x: 3, y: 0}, {x: 3, y: 7}], King);
+  curryPieces([{x: 4, y: 0}, {x: 4, y: 7}], Queen);
+}
 
-  const bishop_indices = [{x: 0, y: 0}, {x: 7, y: 0}, {x: 0, y: 7}, {x: 7, y: 7}];
-  bishop_indices.forEach(pos => {
-    const knight = pos.y > 0 ? new Bishop(pos.x, pos.y, 'B') : new Bishop(pos.x, pos.y, 'W');
+function curryPieces(arr, type) {
+  arr.forEach(pos => {
+    const piece = pos.y > 0 ? new type(pos.x, pos.y, 'B') : new type(pos.x, pos.y, 'W');
     const ind = 8 * pos.x + pos.y;
-    board[ind].piece = knight;
-    knight.drawPiece('B');
-  });
+    board[ind].piece = piece;
 
-  const rook_indices = [{x: 1, y: 0}, {x: 6, y: 0}, {x: 1, y: 7}, {x: 6, y: 7}];
-  rook_indices.forEach(pos => {
-    const knight = pos.y > 0 ? new Rook(pos.x, pos.y, 'B') : new Rook(pos.x, pos.y, 'W');
-    const ind = 8 * pos.x + pos.y;
-    board[ind].piece = knight;
-    knight.drawPiece('R');
-  });
-
-  const king_indices = [{x: 3, y: 0}, {x: 3, y: 7}];
-  king_indices.forEach(pos => {
-    const knight = pos.y > 0 ? new King(pos.x, pos.y, 'B') : new King(pos.x, pos.y, 'W');
-    const ind = 8 * pos.x + pos.y;
-    board[ind].piece = knight;
-    knight.drawPiece('#');
-  });
-
-  const queen_indices = [{x: 4, y: 0}, {x: 4, y: 7}];
-  queen_indices.forEach(pos => {
-    const knight = pos.y > 0 ? new Queen(pos.x, pos.y, 'B') : new Queen(pos.x, pos.y, 'W');
-    const ind = 8 * pos.x + pos.y;
-    board[ind].piece = knight;
-    knight.drawPiece('Q');
+    if (type == King) {
+      piece.drawPiece("#");
+    } else {
+      // Kind of ugly but it's all right:
+      piece.drawPiece(String(type)[6]);
+    }
   });
 }
 
