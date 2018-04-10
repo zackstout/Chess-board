@@ -5,3 +5,6 @@ The first central goal is to find the set of all valid moves, given a certain bo
 
 ## Built with:
 - p5.js
+
+## Screenshot:
+![screen shot 2018-04-09 at 8 25 21 pm](https://user-images.githubusercontent.com/29472568/38531152-32b7d270-3c34-11e8-8fe0-05bda165e547.png)

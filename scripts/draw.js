@@ -1,12 +1,6 @@
 
 // The board will contain all of our Cells:
 let board = [];
-let knight_indices = [];
-let bishop_indices = [];
-let rook_indices = [];
-let queen_indices = [];
-let king_indices = [];
-
 
 function setup() {
   createCanvas(500, 500);
@@ -29,11 +23,6 @@ function drawGrid() {
     }
   }
 }
-
-function draw() {
-
-}
-
 
 // Add all pieces to the board in their initial state:
 function initPieces() {
@@ -62,6 +51,7 @@ function initPieces() {
 
 function curryPieces(arr, type) {
   arr.forEach(pos => {
+    // All right, this is a fine way to pass in variable variable names:
     const piece = pos.y > 0 ? new type(pos.x, pos.y, 'B') : new type(pos.x, pos.y, 'W');
     const ind = 8 * pos.x + pos.y;
     board[ind].piece = piece;
@@ -75,12 +65,11 @@ function curryPieces(arr, type) {
   });
 }
 
+// Handle user input:
 function mousePressed() {
   // Grabbing the position of the cell that was clicked:
   const x = Math.floor(mouseX / (width/8));
-  // console.log(x);
   const y = Math.floor(mouseY / (height/8));
-  // console.log(y);
 
   // Grabbing index of our cell in the Board array:
   const ind = 8 * x + y;
@@ -88,11 +77,8 @@ function mousePressed() {
 
   if (board[ind].piece) {
     board[ind].activate();
-
     board[ind].piece.getMoves();
   }
-
-
 }
 
 
