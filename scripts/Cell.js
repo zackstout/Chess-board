@@ -7,6 +7,8 @@ class Cell {
     // this.active = false;
   }
 
+
+
   // White means same parity, black means different parity:
   draw() {
     const same_parity = this.x % 2 === this.y % 2;
@@ -25,5 +27,12 @@ class Cell {
   activate() {
     fill(100, 200, 0);
     rect(this.x * width/8, this.y * height/8, width/8, height/8);
+  }
+
+  valid_cells() {
+    fill(200, 100, 0);
+    rect(this.x * width/8, this.y * height/8, width/8, height/8);
+
+    console.log('hi valid');
   }
 }

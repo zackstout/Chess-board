@@ -37,7 +37,8 @@ class Pawn extends Piece {
       }
     }
 
-    console.log(possibleMoves);
+    return possibleMoves;
+    // console.log(possibleMoves);
   }
 
 

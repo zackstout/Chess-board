@@ -77,7 +77,11 @@ function mousePressed() {
 
   if (board[ind].piece) {
     board[ind].activate();
-    board[ind].piece.getMoves();
+    var moves = board[ind].piece.getMoves();
+    console.log(moves);
+    moves.forEach(move => {
+      move.valid_cells();
+    });
   }
 }
 
