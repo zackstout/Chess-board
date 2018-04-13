@@ -9,7 +9,7 @@ class Rook extends Piece {
     };
   }
 
-
+// This is truly disgusting:
   getMoves() {
     // console.log(this.color, board);
     let possibleMoves = [];
@@ -22,6 +22,26 @@ class Rook extends Piece {
       ind -= 8;
       possibleMoves.push(board[ind]);
       x--;
+    }
+    ind = 8 * this.pos.x + this.pos.y;
+    x = this.pos.x;
+    while (x < 7) {
+      ind += 8;
+      possibleMoves.push(board[ind]);
+      x++;
+    }
+    ind = 8 * this.pos.x + this.pos.y;
+    while (y > 0) {
+      ind -= 1;
+      possibleMoves.push(board[ind]);
+      y--;
+    }
+    ind = 8 * this.pos.x + this.pos.y;
+    y = this.pos.y;
+    while (y < 7) {
+      ind += 1;
+      possibleMoves.push(board[ind]);
+      y++;
     }
 
     console.log(possibleMoves);

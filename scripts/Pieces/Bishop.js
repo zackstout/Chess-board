@@ -9,16 +9,10 @@ class Bishop extends Piece {
     };
   }
 
+  // Ugh please refactor this:
   getMoves() {
-    // console.log(this.color, board);
     let possibleMoves = [];
     let ind = 8 * this.pos.x + this.pos.y;
-    // console.log(ind);
-
-    // this is a strange idea but i'll run with it:
-    // Yeah this is a bit more complicated than we thought:
-    // Need to check if it's on the edge. And need to add *each* cell on the diagonal, until we're beyond the grid.
-    // That's not even taking into account blocking. But maybe that won't be too hard in the end.
 
     // moving SW:
     const ind1 = ind - 7;
