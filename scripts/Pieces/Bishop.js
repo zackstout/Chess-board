@@ -42,16 +42,19 @@ class Bishop extends Piece {
       possibleMoves.push(board[ind]);
       min1--;
     }
+    ind = 8 * this.pos.x + this.pos.y;
     while (min2 > 0) {
       ind -= 9;
       possibleMoves.push(board[ind]);
-      min2--;  
+      min2--;
     }
+    ind = 8 * this.pos.x + this.pos.y;
     while (min3 > 0) {
       ind += 7;
       possibleMoves.push(board[ind]);
       min3--;
     }
+    ind = 8 * this.pos.x + this.pos.y;
     while (min4 > 0) {
       ind += 9;
       possibleMoves.push(board[ind]);

@@ -11,15 +11,17 @@ class Rook extends Piece {
 
 
   getMoves() {
-    console.log(this.color, board);
+    // console.log(this.color, board);
     let possibleMoves = [];
+    let ind = 8 * this.pos.x + this.pos.y;
 
-    for (let i=0; i < 7; i++) {
+    let x = this.pos.x;
+    let y = this.pos.y;
 
-    }
-
-    for (let j=0; j < 7; j++) {
-
+    while (x > 0) {
+      ind -= 8;
+      possibleMoves.push(board[ind]);
+      x--;
     }
 
     console.log(possibleMoves);
